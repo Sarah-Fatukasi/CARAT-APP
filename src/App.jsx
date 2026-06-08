@@ -254,6 +254,8 @@ export default function CARAT() {
       padding: "0",
       display: "flex",
       flexDirection: "column",
+      width: "100%",
+      overflowX: "hidden",
     }}>
       {/* Header */}
       <div style={{

@@ -248,9 +248,9 @@ export default function CARAT() {
   return (
     <div style={{
       minHeight: "100vh",
-      background: "#0A0F1E",
+      background: "#F8FAFC",
       fontFamily: "'Georgia', 'Times New Roman', serif",
-      color: "#E8EAF0",
+      color: "#1E293B",
       padding: "0",
       display: "flex",
       flexDirection: "column",
@@ -259,19 +259,19 @@ export default function CARAT() {
     }}>
       {/* Header */}
       <div style={{
-        borderBottom: "1px solid rgba(255,255,255,0.08)",
+        borderBottom: "1px solid rgba(0, 0, 0, 0.08)",
         padding: "20px 32px",
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
-        background: "rgba(255,255,255,0.02)",
+        background: "#FFFFFF",
       }}>
         <div style={{ display: "flex", alignItems: "baseline", gap: "12px" }}>
           <span style={{
             fontSize: "26px",
             fontWeight: "700",
             letterSpacing: "0.12em",
-            color: "#C8A97E",
+            color: "#0284C7",
             fontFamily: "'Georgia', serif",
           }}>CARAT</span>
           <span style={{
@@ -300,7 +300,7 @@ export default function CARAT() {
           <div style={{
             height: "100%",
             width: `${progress}%`,
-            background: "linear-gradient(90deg, #C8A97E, #E8C99E)",
+            background: "linear-gradient(90deg, #0284C7, #E8C99E)",
             transition: "width 0.4s ease",
           }} />
         </div>
@@ -494,7 +494,7 @@ export default function CARAT() {
               borderRadius: "8px",
               padding: "20px",
             }}>
-              <p style={{ margin: "0 0 4px", fontSize: "15px", color: "#C8A97E" }}>EuroSCORE II</p>
+              <p style={{ margin: "0 0 4px", fontSize: "15px", color: "#0284C7" }}>EuroSCORE II</p>
               <p style={{ margin: 0, fontSize: "13px", color: "rgba(255,255,255,0.45)", lineHeight: "1.6" }}>
                 The European System for Cardiac Operative Risk Evaluation predicts in-hospital mortality after cardiac surgery. It incorporates age, sex, renal function, NYHA class, LV function, pulmonary hypertension, and operative urgency among 18 variables.
               </p>
@@ -615,7 +615,7 @@ export default function CARAT() {
             <button onClick={reset} style={{
               background: "transparent",
               border: "1px solid rgba(200,169,126,0.3)",
-              color: "#C8A97E",
+              color: "#0284C7",
               borderRadius: "6px",
               padding: "14px",
               fontSize: "13px",
@@ -648,7 +648,7 @@ export default function CARAT() {
 
 function navBtnStyle(type) {
   return {
-    background: type === "primary" ? "linear-gradient(135deg, #C8A97E, #A8885E)" : "transparent",
+    background: type === "primary" ? "linear-gradient(135deg, #0284C7, #0369A1)" : "transparent",
     border: type === "primary" ? "none" : "1px solid rgba(255,255,255,0.15)",
     color: type === "primary" ? "#0A0F1E" : "rgba(255,255,255,0.5)",
     borderRadius: "6px",
@@ -738,7 +738,7 @@ function Tag({ children, active, onClick }) {
         border: `1px solid ${active ? "rgba(200,169,126,0.5)" : "rgba(255,255,255,0.1)"}`,
         borderRadius: "20px",
         padding: "7px 14px",
-        color: active ? "#C8A97E" : "rgba(255,255,255,0.5)",
+        color: active ? "#0284C7" : "rgba(255,255,255,0.5)",
         fontSize: "13px",
         cursor: "pointer",
         transition: "all 0.15s ease",

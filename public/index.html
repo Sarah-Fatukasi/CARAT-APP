@@ -6,12 +6,24 @@
     <meta name="description" content="CARAT — Cardiothoracic AI Referral and Triage. A clinical decision-support prototype for cardiothoracic referral pathways in Sub-Saharan Africa." />
     <title>CARAT | Cardiothoracic AI Referral & Triage</title>
     <style>
+      /* Global Mobile Layout Shield */
       html, body, #root, #root > div {
         max-width: 100% !important;
         width: 100% !important;
         overflow-x: hidden !important;
         margin: 0 !important;
         padding: 0 !important;
+        background-color: #F8FAFC !important;
+      }
+      
+      /* Force All System Text & Labels to be Readable Dark Slate */
+      #root div, #root label, #root h1, #root h2, #root p, #root span {
+        color: #1E293B !important;
+      }
+      
+      /* Force Action Buttons and Links to Stay Crisp White */
+      #root button, #root a, #root button *, #root a * {
+        color: #FFFFFF !important;
       }
     </style>
   </head>
@@ -20,4 +32,3 @@
     <div id="root"></div>
   </body>
 </html>
-

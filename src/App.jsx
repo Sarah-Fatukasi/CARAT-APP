@@ -315,24 +315,25 @@ export default function CARAT() {
         transition: "opacity 0.2s ease",
       }}>
        <a 
-         href="/Feedback_Form.html" 
-         target="_blank" 
-         rel="noopener noreferrer" 
-         style={{
-           display: 'inline-block',
-           padding: '10px 20px',
-           backgroundColor: '#0070f3',
-           color: 'white',
-           textDecoration: 'none',
-           borderRadius: '5px',
-           fontWeight: 'bold',
-           marginTop: '20px'
-         }}
-       >
-         Give Feedback
-       </a>
-       {/* Section header */}
-      {section !== "result" && (
+  href="/Feedback_Form.html" 
+  target="_blank" 
+  rel="noopener noreferrer" 
+  style={{
+    position: 'fixed',
+    bottom: '30px',
+    right: '30px',
+    backgroundColor: '#0070f3',
+    color: 'white',
+    padding: '12px 20px',
+    borderRadius: '8px',
+    textDecoration: 'none',
+    fontWeight: 'bold',
+    zIndex: 10000,
+    boxShadow: '0 4px 14px rgba(0, 0, 0, 0.2)'
+  }}
+>
+  💬 Give Feedback
+</a>
 
         {/* Section header */}
         {section !== "result" && (

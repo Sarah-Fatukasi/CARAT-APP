@@ -349,21 +349,29 @@
   button.textContent = 'Sending...';
   button.disabled = true;
 
-  const response = await fetch(form.action, {
-    method: form.method,
-    body: data,
-    headers: { 'Accept': 'application/json' }
-  });
+  try {
+    // Hardcoding your link and POST method guarantees safety
+    const response = await fetch('https://formspree.io', {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    });
 
-  if (response.ok) {
-    form.style.display = 'none';
-    document.getElementById('thankYou').style.display = 'block';
-  } else {
-    alert('Oops! There was a problem submitting your form.');
+    if (response.ok) {
+      form.style.display = 'none';
+      document.getElementById('thankYou').style.display = 'block';
+    } else {
+      alert('Formspree rejected the submission. Please check your form ID.');
+      button.textContent = 'Submit Feedback';
+      button.disabled = false;
+    }
+  } catch (error) {
+    alert('A network error occurred. Please check your internet connection.');
     button.textContent = 'Submit Feedback';
     button.disabled = false;
   }
 });
+
 </script>
 </body>
 </html>

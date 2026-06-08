@@ -6,14 +6,31 @@
     <meta name="description" content="CARAT — Cardiothoracic AI Referral and Triage. A clinical decision-support prototype for cardiothoracic referral pathways in Sub-Saharan Africa." />
     <title>CARAT | Cardiothoracic AI Referral & Triage</title>
     <style>
+      /* Global Reset: Force padding inside boundaries to perfectly center layouts */
+      *, *:before, *:after {
+        box-sizing: border-box !important;
+      }
+
       /* Global Mobile Layout Shield & Light Theme Background */
-      html, body, #root, #root > div {
+      html, body, #root {
         max-width: 100% !important;
         width: 100% !important;
         overflow-x: hidden !important;
         margin: 0 !important;
         padding: 0 !important;
         background-color: #F8FAFC !important;
+      }
+      
+      /* Balance and Center the Main App Structural Wrappers */
+      #root > div {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 auto !important;
+      }
+
+      /* Prevent inner layouts or custom cards from breaking boundaries */
+      #root div {
+        max-width: 100% !important;
       }
       
       /* Force All System Text, Labels, and Headings to be Readable Dark Slate */
@@ -28,7 +45,7 @@
         border: 1px solid #CBD5E1 !important;
       }
       
-      /* Master Selection Tile & Button Fix: Forces dark text and clear outer outlines */
+      /* Master Selection Tile & Button Fix */
       #root button {
         color: #1E293B !important;
         border: 1px solid #94A3B8 !important;

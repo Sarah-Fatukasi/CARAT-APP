@@ -314,6 +314,25 @@ export default function CARAT() {
         opacity: animating ? 0 : 1,
         transition: "opacity 0.2s ease",
       }}>
+       <a 
+         href="/Feedback_Form.html" 
+         target="_blank" 
+         rel="noopener noreferrer" 
+         style={{
+           display: 'inline-block',
+           padding: '10px 20px',
+           backgroundColor: '#0070f3',
+           color: 'white',
+           textDecoration: 'none',
+           borderRadius: '5px',
+           fontWeight: 'bold',
+           marginTop: '20px'
+         }}
+       >
+         Give Feedback
+       </a>
+       {/* Section header */}
+      {section !== "result" && (
 
         {/* Section header */}
         {section !== "result" && (

@@ -46,16 +46,22 @@
       }
       
       /* Force All System Text, Labels, and Headings to be Readable Dark Slate and Left-Aligned */
-      #root div, #root label, #root h1, #root h2, #root p, #root span, #root li, #root small {
+      #root div, #root label, #root h1, #root h2, #root p, #root span, #root li, #root small, #root strong, #root b, #root em, #root i {
         color: #1E293B !important;
         opacity: 1 !important; 
-        text-align: left !important; /* 👈 Forces paragraphs to snap cleanly to the left margin */
+        text-align: left !important;
+      }
+
+      /* CRITICAL: Force all hidden inline text labels (like bold prefixes) to become visible */
+      #root p *, #root div * {
+        color: #1E293B !important;
+        opacity: 1 !important;
       }
 
       /* Force informational paragraphs to have a clean line height and normal word wrapping */
       #root p, #root small, #root div {
         line-height: 1.6 !important;
-        white-space: normal !important; /* 👈 Collapses any accidental code indents or spacing overrides */
+        white-space: normal !important; 
       }
       
       /* Fix Standard Inputs, Select Dropdowns, and Textareas */
@@ -69,11 +75,14 @@
       #root button {
         color: #1E293B !important;
         border: 1px solid #94A3B8 !important;
-        text-align: center !important; /* 👈 Keeps button label text perfectly centered */
+        text-align: center !important; 
       }
 
-      /* Keep the Floating Feedback Action Button Text Crisp White */
-      #root a, #root a * {
+      /* Safety Shield: Keeps solid blue action buttons and links crisp white */
+      #root button[style*="background"], 
+      #root .submit-btn,
+      #root a, 
+      #root a * {
         color: #FFFFFF !important;
         text-align: center !important;
       }

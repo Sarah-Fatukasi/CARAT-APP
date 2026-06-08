@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>CARAT Pilot Feedback</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #0A0F1E;
+    font-family: 'Georgia', serif;
+    color: #E8EAF0;
+    min-height: 100vh;
+    padding: 48px 24px 80px;
+  }
+  .container { max-width: 640px; margin: 0 auto; }
+  .logo {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: #C8A97E;
+    margin-bottom: 4px;
+  }
+  .logo-sub {
+    font-size: 11px;
+    color: rgba(200,169,126,0.5);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+  }
+  h1 {
+    font-size: 26px;
+    font-weight: 400;
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+  .intro {
+    font-size: 14px;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.7;
+    margin-bottom: 40px;
+    border-left: 2px solid rgba(200,169,126,0.3);
+    padding-left: 16px;
+  }
+  .section-label {
+    font-size: 11px;
+    color: rgba(200,169,126,0.7);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    margin-top: 36px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .field { margin-bottom: 24px; }
+  label {
+    display: block;
+    font-size: 13px;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 8px;
+    line-height: 1.5;
+  }
+  input[type="text"], input[type="email"], select, textarea {
+    width: 100%;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 6px;
+    padding: 12px 14px;
+    color: #E8EAF0;
+    font-size: 14px;
+    font-family: 'Georgia', serif;
+    outline: none;
+  }
+  textarea { resize: vertical; min-height: 90px; }
+  .scale-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 4px;
+  }
+  .scale-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 6px;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.03);
+    color: rgba(255,255,255,0.5);
+    font-size: 15px;
+    cursor: pointer;
+    font-family: 'Georgia', serif;
+    transition: all 0.15s;
+  }
+  .scale-btn:hover { border-color: rgba(200,169,126,0.5); color: #C8A97E; }
+  .scale-btn.selected { background: rgba(200,169,126,0.15); border-color: rgba(200,169,126,0.6); color: #C8A97E; }
+  .scale-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 6px;
+    font-size: 11px;
+    color: rgba(255,255,255,0.3);
+  }
+  .radio-group { display: flex; flex-direction: column; gap: 10px; margin-top: 4px; }
+  .radio-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    padding: 10px 14px;
+    border-radius: 6px;
+    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.02);
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+    transition: all 0.15s;
+  }
+  .radio-option:hover { border-color: rgba(200,169,126,0.3); }
+  .radio-option.selected { border-color: rgba(200,169,126,0.5); background: rgba(200,169,126,0.08); color: #C8A97E; }
+  .radio-dot {
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255,255,255,0.2);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .radio-dot.selected { border-color: #C8A97E; }
+  .radio-dot.selected::after {
+    content: '';
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: #C8A97E;
+  }
+  .submit-btn {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, #C8A97E, #A8885E);
+    border: none;
+    border-radius: 6px;
+    color: #0A0F1E;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-top: 40px;
+    font-family: 'Georgia', serif;
+  }
+  .disclaimer {
+    font-size: 11px;
+    color: rgba(255,255,255,0.2);
+    line-height: 1.7;
+    margin-top: 24px;
+    text-align: center;
+  }
+  .thank-you {
+    display: none;
+    text-align: center;
+    padding: 60px 20px;
+  }
+  .thank-you h2 { font-size: 24px; color: #C8A97E; margin-bottom: 12px; font-weight: 400; }
+  .thank-you p { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="logo">CARAT</div>
+  <div class="logo-sub">Cardiothoracic AI Referral & Triage — Pilot Feedback</div>
+
+  <h1>Clinician Evaluation Form</h1>
+  <p class="intro">
+    CARAT is a prototype AI-assisted triage tool designed to support cardiothoracic referral decisions in resource-limited settings across Sub-Saharan Africa. Your feedback as a clinician is essential to its development. This form takes approximately 5 minutes to complete.
+  </p>
+
+  <form id="feedbackForm">
+
+    <div class="section-label">Your Details</div>
+
+    <div class="field">
+      <label>Full name</label>
+      <input type="text" name="name" placeholder="Dr. / Prof. ..." required />
+    </div>
+    <div class="field">
+      <label>Email address (for follow-up if needed)</label>
+      <input type="email" name="email" placeholder="your@email.com" />
+    </div>
+    <div class="field">
+      <label>Specialty / Role</label>
+      <select name="specialty">
+        <option value="">Select...</option>
+        <option>Cardiothoracic Surgery</option>
+        <option>Cardiology</option>
+        <option>Internal Medicine</option>
+        <option>General Surgery</option>
+        <option>General Practice / Family Medicine</option>
+        <option>Emergency Medicine</option>
+        <option>Anaesthesia</option>
+        <option>Medical Student / Trainee</option>
+        <option>Other</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>Country of practice</label>
+      <input type="text" name="country" placeholder="e.g. Nigeria" />
+    </div>
+    <div class="field">
+      <label>Level of facility where you primarily work</label>
+      <select name="facility">
+        <option value="">Select...</option>
+        <option>Primary Health Centre</option>
+        <option>General / District Hospital</option>
+        <option>State Specialist Hospital</option>
+        <option>Federal / University Teaching Hospital</option>
+        <option>Private Hospital</option>
+        <option>Other</option>
+      </select>
+    </div>
+
+    <div class="section-label">Usability</div>
+
+    <div class="field">
+      <label>1. How easy was CARAT to navigate and use? (1 = very difficult, 5 = very easy)</label>
+      <div class="scale-row" id="q1"></div>
+      <div class="scale-labels"><span>Very difficult</span><span>Very easy</span></div>
+      <input type="hidden" name="q1_usability" id="q1_val" />
+    </div>
+
+    <div class="field">
+      <label>2. Were the clinical input fields relevant to what you would have available in your setting?</label>
+      <div class="radio-group" id="q2">
+        <div class="radio-option" data-value="yes_all">Yes — all fields are available in my setting</div>
+        <div class="radio-option" data-value="yes_most">Yes — most fields are available</div>
+        <div class="radio-option" data-value="no_some">No — some important fields were missing</div>
+        <div class="radio-option" data-value="no_many">No — many fields are unavailable in my setting</div>
+      </div>
+      <input type="hidden" name="q2_relevance" id="q2_val" />
+    </div>
+
+    <div class="section-label">Clinical Appropriateness</div>
+
+    <div class="field">
+      <label>3. After testing CARAT with one or more patient scenarios, how appropriate were the triage recommendations? (1 = not at all appropriate, 5 = very appropriate)</label>
+      <div class="scale-row" id="q3"></div>
+      <div class="scale-labels"><span>Not appropriate</span><span>Very appropriate</span></div>
+      <input type="hidden" name="q3_appropriateness" id="q3_val" />
+    </div>
+
+    <div class="field">
+      <label>4. Did the clinical flags and recommended actions make sense in your clinical context?</label>
+      <div class="radio-group" id="q4">
+        <div class="radio-option" data-value="yes_all">Yes — all flags and actions were clinically sound</div>
+        <div class="radio-option" data-value="yes_most">Yes — most were appropriate, minor issues only</div>
+        <div class="radio-option" data-value="mixed">Mixed — some were appropriate, others were not</div>
+        <div class="radio-option" data-value="no">No — the recommendations did not reflect local practice</div>
+      </div>
+      <input type="hidden" name="q4_flags" id="q4_val" />
+    </div>
+
+    <div class="field">
+      <label>5. Was there anything clinically important that CARAT did not ask about or consider?</label>
+      <textarea name="q5_missing" placeholder="e.g. rheumatic fever history, TB co-infection, specific local disease presentations..."></textarea>
+    </div>
+
+    <div class="section-label">Implementation & Value</div>
+
+    <div class="field">
+      <label>6. Would you use a tool like CARAT in your clinical practice if it were available?</label>
+      <div class="radio-group" id="q6">
+        <div class="radio-option" data-value="yes_definitely">Yes, definitely</div>
+        <div class="radio-option" data-value="yes_probably">Yes, probably</div>
+        <div class="radio-option" data-value="unsure">Unsure</div>
+        <div class="radio-option" data-value="probably_not">Probably not</div>
+        <div class="radio-option" data-value="no">No</div>
+      </div>
+      <input type="hidden" name="q6_adoption" id="q6_val" />
+    </div>
+
+    <div class="field">
+      <label>7. What would need to change for CARAT to be genuinely useful in your setting? (Please be specific)</label>
+      <textarea name="q7_changes" placeholder="Your most important suggestions here..."></textarea>
+    </div>
+
+    <div class="field">
+      <label>8. Any other comments, concerns, or suggestions?</label>
+      <textarea name="q8_other" placeholder="Optional"></textarea>
+    </div>
+
+    <button type="submit" class="submit-btn">Submit Feedback</button>
+    <p class="disclaimer">Your responses are collected solely for research and development purposes. No patient data is collected by this form.</p>
+  </form>
+
+  <div class="thank-you" id="thankYou">
+    <h2>Thank you.</h2>
+    <p>Your feedback has been recorded and will directly inform CARAT's development.<br/>We are grateful for your time and clinical expertise.</p>
+  </div>
+</div>
+
+<script>
+  // Build scale buttons
+  ['q1','q3'].forEach(id => {
+    const row = document.getElementById(id);
+    for (let i = 1; i <= 5; i++) {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'scale-btn';
+      btn.textContent = i;
+      btn.addEventListener('click', () => {
+        row.querySelectorAll('.scale-btn').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+        document.getElementById(id + '_val').value = i;
+      });
+      row.appendChild(btn);
+    }
+  });
+
+  // Build radio groups
+  ['q2','q4','q6'].forEach(id => {
+    const group = document.getElementById(id);
+    group.querySelectorAll('.radio-option').forEach(opt => {
+      opt.addEventListener('click', () => {
+        group.querySelectorAll('.radio-option').forEach(o => {
+          o.classList.remove('selected');
+          const dot = o.querySelector('.radio-dot');
+          if (dot) dot.classList.remove('selected');
+        });
+        opt.classList.add('selected');
+        document.getElementById(id + '_val').value = opt.dataset.value;
+        // Add dot if not present
+        if (!opt.querySelector('.radio-dot')) {
+          const dot = document.createElement('div');
+          dot.className = 'radio-dot selected';
+          opt.prepend(dot);
+        } else {
+          opt.querySelector('.radio-dot').classList.add('selected');
+        }
+      });
+      // Add dot to each option
+      const dot = document.createElement('div');
+      dot.className = 'radio-dot';
+      opt.prepend(dot);
+    });
+  });
+
+  // Form submission — logs to console (replace with Formspree endpoint)
+  document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const data = new FormData(this);
+    const obj = {};
+    data.forEach((v, k) => obj[k] = v);
+    console.log('CARAT Feedback:', obj);
+    // TO DEPLOY: replace console.log with fetch to Formspree or Google Forms endpoint
+    document.getElementById('feedbackForm').style.display = 'none';
+    document.getElementById('thankYou').style.display = 'block';
+  });
+</script>
+</body>
+</html>

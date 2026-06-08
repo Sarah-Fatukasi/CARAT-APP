@@ -6,7 +6,7 @@
     <meta name="description" content="CARAT — Cardiothoracic AI Referral and Triage. A clinical decision-support prototype for cardiothoracic referral pathways in Sub-Saharan Africa." />
     <title>CARAT | Cardiothoracic AI Referral & Triage</title>
     <style>
-      /* Global Mobile Layout Shield */
+      /* Global Mobile Layout Shield & Light Theme Background */
       html, body, #root, #root > div {
         max-width: 100% !important;
         width: 100% !important;
@@ -16,13 +16,26 @@
         background-color: #F8FAFC !important;
       }
       
-      /* Force All System Text & Labels to be Readable Dark Slate */
-      #root div, #root label, #root h1, #root h2, #root p, #root span {
+      /* Force All System Text, Labels, and Headings to be Readable Dark Slate */
+      #root div, #root label, #root h1, #root h2, #root p, #root span, #root li {
         color: #1E293B !important;
       }
       
-      /* Force Action Buttons and Links to Stay Crisp White */
-      #root button, #root a, #root button *, #root a * {
+      /* Fix Standard Inputs, Select Dropdowns, and Textareas */
+      #root input, #root select, #root textarea, #root option {
+        background-color: #FFFFFF !important;
+        color: #1E293B !important;
+        border: 1px solid #CBD5E1 !important;
+      }
+      
+      /* Master Selection Tile & Button Fix: Forces dark text and clear outer outlines */
+      #root button {
+        color: #1E293B !important;
+        border: 1px solid #94A3B8 !important;
+      }
+
+      /* Keep the Floating Feedback Action Button Text Crisp White */
+      #root a, #root a * {
         color: #FFFFFF !important;
       }
     </style>

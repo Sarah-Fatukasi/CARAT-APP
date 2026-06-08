@@ -52,7 +52,7 @@
         text-align: left !important;
       }
 
-      /* CRITICAL: Force all hidden inline text labels (like bold prefixes) to become visible */
+      /* Force all hidden inline text labels to become visible */
       #root p *, #root div * {
         color: #1E293B !important;
         opacity: 1 !important;
@@ -71,18 +71,30 @@
         border: 1px solid #CBD5E1 !important;
       }
       
-      /* Master Selection Tile & Button Fix */
+      /* Unselected Buttons, Pills, and Tiles Fix: White background, dark text, clean border */
       #root button {
+        background-color: #FFFFFF !important;
         color: #1E293B !important;
-        border: 1px solid #94A3B8 !important;
+        border: 1px solid #CBD5E1 !important;
         text-align: center !important; 
       }
 
-      /* Safety Shield: Keeps solid blue action buttons and links crisp white */
-      #root button[style*="background"], 
-      #root .submit-btn,
-      #root a, 
-      #root a * {
+      /* Selected/Primary Action Buttons Fix: Turns solid medical blue with white text when active */
+      #root button[style*="#0284C7"],
+      #root button[style*="0284C7"],
+      #root button[style*="rgb(2, 132, 199)"] {
+        background-color: #0284C7 !important;
+        color: #FFFFFF !important;
+        border-color: #0284C7 !important;
+      }
+      #root button[style*="#0284C7"] *,
+      #root button[style*="0284C7"] *,
+      #root button[style*="rgb(2, 132, 199)"] * {
+        color: #FFFFFF !important;
+      }
+
+      /* Keep the Floating Feedback Action Button Text Crisp White */
+      #root a, #root a * {
         color: #FFFFFF !important;
         text-align: center !important;
       }

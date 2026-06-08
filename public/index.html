@@ -45,9 +45,16 @@
         max-width: 100% !important;
       }
       
-      /* Force All System Text, Labels, and Headings to be Readable Dark Slate */
-      #root div, #root label, #root h1, #root h2, #root p, #root span, #root li {
+      /* Force All System Text, Labels, and Headings to be Readable Dark Slate and Full Opacity */
+      #root div, #root label, #root h1, #root h2, #root p, #root span, #root li, #root small {
         color: #1E293B !important;
+        opacity: 1 !important; /* 👈 Fixes the faint/ghost text issue */
+      }
+
+      /* Force informational paragraphs to be cleanly left-aligned instead of weirdly centered */
+      #root p, #root small {
+        text-align: left !important; /* 👈 Fixes the jagged paragraph layout */
+        line-height: 1.6 !important;
       }
       
       /* Fix Standard Inputs, Select Dropdowns, and Textareas */

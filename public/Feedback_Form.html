@@ -170,7 +170,7 @@
     CARAT is a prototype AI-assisted triage tool designed to support cardiothoracic referral decisions in resource-limited settings across Sub-Saharan Africa. Your feedback as a clinician is essential to its development. This form takes approximately 5 minutes to complete.
   </p>
 
-  <form id="feedbackForm">
+ <form id="feedbackForm" action="https://formspree.io" method="POST">
 
     <div class="section-label">Your Details</div>
 
@@ -339,17 +339,31 @@
     });
   });
 
-  // Form submission — logs to console (replace with Formspree endpoint)
-  document.getElementById('feedbackForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const data = new FormData(this);
-    const obj = {};
-    data.forEach((v, k) => obj[k] = v);
-    console.log('CARAT Feedback:', obj);
-    // TO DEPLOY: replace console.log with fetch to Formspree or Google Forms endpoint
-    document.getElementById('feedbackForm').style.display = 'none';
-    document.getElementById('thankYou').style.display = 'block';
+ document.getElementById('feedbackForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  
+  const form = e.target;
+  const data = new FormData(form);
+  const button = form.querySelector('.submit-btn');
+  
+  button.textContent = 'Sending...';
+  button.disabled = true;
+
+  const response = await fetch(form.action, {
+    method: form.method,
+    body: data,
+    headers: { 'Accept': 'application/json' }
   });
+
+  if (response.ok) {
+    form.style.display = 'none';
+    document.getElementById('thankYou').style.display = 'block';
+  } else {
+    alert('Oops! There was a problem submitting your form.');
+    button.textContent = 'Submit Feedback';
+    button.disabled = false;
+  }
+});
 </script>
 </body>
 </html>

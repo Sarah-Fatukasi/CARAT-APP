@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>CARAT Pilot Feedback</title>
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
-    background: #0A0F1E;
+    background: #F8FAFC;
     font-family: 'Georgia', serif;
-    color: #E8EAF0;
+    color: #1E293B;
     min-height: 100vh;
     padding: 48px 24px 80px;
   }
@@ -18,12 +18,12 @@
     font-size: 22px;
     font-weight: 700;
     letter-spacing: 0.12em;
-    color: #C8A97E;
+    color: #0284C7;
     margin-bottom: 4px;
   }
   .logo-sub {
     font-size: 11px;
-    color: rgba(200,169,126,0.5);
+    color: #64748B;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     margin-bottom: 40px;
@@ -36,40 +36,44 @@
   }
   .intro {
     font-size: 14px;
-    color: rgba(255,255,255,0.5);
+    color: #64748B;
     line-height: 1.7;
     margin-bottom: 40px;
-    border-left: 2px solid rgba(200,169,126,0.3);
+    border-left: 2px solid #0284C7;
     padding-left: 16px;
   }
   .section-label {
     font-size: 11px;
-    color: rgba(200,169,126,0.7);
+    color: #0284C7;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     margin-bottom: 20px;
     margin-top: 36px;
     padding-bottom: 8px;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid #E2E8F0;
   }
   .field { margin-bottom: 24px; }
   label {
     display: block;
     font-size: 13px;
-    color: rgba(255,255,255,0.65);
+    color: #475569;
     margin-bottom: 8px;
     line-height: 1.5;
   }
   input[type="text"], input[type="email"], select, textarea {
     width: 100%;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.1);
+    background: #FFFFFF;
+    border: 1px solid #CBD5E1;
     border-radius: 6px;
     padding: 12px 14px;
-    color: #E8EAF0;
+    color: #1E293B;
     font-size: 14px;
     font-family: 'Georgia', serif;
     outline: none;
+  }
+  input[type="text"]:focus, input[type="email"]:focus, select:focus, textarea:focus {
+    border-color: #0284C7;
+    box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.1);
   }
   textarea { resize: vertical; min-height: 90px; }
   .scale-row {
@@ -82,22 +86,22 @@
     width: 44px;
     height: 44px;
     border-radius: 6px;
-    border: 1px solid rgba(255,255,255,0.12);
-    background: rgba(255,255,255,0.03);
-    color: rgba(255,255,255,0.5);
+    border: 1px solid #CBD5E1;
+    background: #FFFFFF;
+    color: #64748B;
     font-size: 15px;
     cursor: pointer;
     font-family: 'Georgia', serif;
     transition: all 0.15s;
   }
-  .scale-btn:hover { border-color: rgba(200,169,126,0.5); color: #C8A97E; }
-  .scale-btn.selected { background: rgba(200,169,126,0.15); border-color: rgba(200,169,126,0.6); color: #C8A97E; }
+  .scale-btn:hover { border-color: #0284C7; color: #0284C7; }
+  .scale-btn.selected { background: rgba(2, 132, 199, 0.1); border-color: #0284C7; color: #0284C7; }
   .scale-labels {
     display: flex;
     justify-content: space-between;
     margin-top: 6px;
     font-size: 11px;
-    color: rgba(255,255,255,0.3);
+    color: #94A3B8;
   }
   .radio-group { display: flex; flex-direction: column; gap: 10px; margin-top: 4px; }
   .radio-option {
@@ -107,35 +111,35 @@
     cursor: pointer;
     padding: 10px 14px;
     border-radius: 6px;
-    border: 1px solid rgba(255,255,255,0.08);
-    background: rgba(255,255,255,0.02);
+    border: 1px solid #E2E8F0;
+    background: #FFFFFF;
     font-size: 14px;
-    color: rgba(255,255,255,0.6);
+    color: #475569;
     transition: all 0.15s;
   }
-  .radio-option:hover { border-color: rgba(200,169,126,0.3); }
-  .radio-option.selected { border-color: rgba(200,169,126,0.5); background: rgba(200,169,126,0.08); color: #C8A97E; }
+  .radio-option:hover { border-color: #CBD5E1; }
+  .radio-option.selected { border-color: #0284C7; background: rgba(2, 132, 199, 0.05); color: #0284C7; }
   .radio-dot {
     width: 16px; height: 16px;
     border-radius: 50%;
-    border: 1.5px solid rgba(255,255,255,0.2);
+    border: 1.5px solid #CBD5E1;
     display: flex; align-items: center; justify-content: center;
     flex-shrink: 0;
   }
-  .radio-dot.selected { border-color: #C8A97E; }
+  .radio-dot.selected { border-color: #0284C7; }
   .radio-dot.selected::after {
     content: '';
     width: 8px; height: 8px;
     border-radius: 50%;
-    background: #C8A97E;
+    background: #0284C7;
   }
   .submit-btn {
     width: 100%;
     padding: 16px;
-    background: linear-gradient(135deg, #C8A97E, #A8885E);
+    background: linear-gradient(135deg, #0284C7, #0369A1);
     border: none;
     border-radius: 6px;
-    color: #0A0F1E;
+    color: #FFFFFF;
     font-size: 14px;
     font-weight: 700;
     letter-spacing: 0.08em;
@@ -146,7 +150,7 @@
   }
   .disclaimer {
     font-size: 11px;
-    color: rgba(255,255,255,0.2);
+    color: #94A3B8;
     line-height: 1.7;
     margin-top: 24px;
     text-align: center;
@@ -156,8 +160,16 @@
     text-align: center;
     padding: 60px 20px;
   }
-  .thank-you h2 { font-size: 24px; color: #C8A97E; margin-bottom: 12px; font-weight: 400; }
-  .thank-you p { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+  .thank-you h2 { font-size: 24px; color: #0284C7; margin-bottom: 12px; font-weight: 400; }
+  .thank-you p { font-size: 14px; color: #64748B; line-height: 1.7; }
+
+  /* Mobile Layout Optimizer */
+  @media (max-width: 480px) {
+    body { padding: 24px 16px 60px; }
+    h1 { font-size: 22px; }
+    .radio-option { font-size: 13px; padding: 10px 12px; }
+    .scale-btn { width: 38px; height: 38px; font-size: 14px; }
+  }
 </style>
 </head>
 <body>

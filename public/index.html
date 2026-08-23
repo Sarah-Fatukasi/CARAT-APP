@@ -6,97 +6,14 @@
     <meta name="description" content="CARAT — Cardiothoracic AI Referral and Triage. A clinical decision-support prototype for cardiothoracic referral pathways in Sub-Saharan Africa." />
     <title>CARAT | Cardiothoracic AI Referral & Triage</title>
     <style>
-      /* Global Reset: Force padding inside boundaries to perfectly center layouts */
-      *, *:before, *:after {
-        box-sizing: border-box !important;
-      }
-
-      /* Global Mobile Layout Shield & Light Theme Background */
+      *, *:before, *:after { box-sizing: border-box; }
       html, body, #root {
-        max-width: 100% !important;
-        width: 100% !important;
-        overflow-x: hidden !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        background-color: #F8FAFC !important;
-      }
-      
-      /* Balance and Center the Main App Structural Wrappers */
-      #root > div {
-        width: 100% !important;
-        max-width: 100% !important;
-        margin: 0 auto !important;
-      }
-
-      /* Desktop Layout Optimizer: Centers and narrows content beneath the header */
-      @media (min-width: 768px) {
-        #root > div > div:not(:first-child) {
-          max-width: 900px !important;
-          margin-left: auto !important;
-          margin-right: auto !important;
-          width: 100% !important;
-          padding-left: 20px !important;
-          padding-right: 20px !important;
-        }
-      }
-
-      /* Prevent inner layouts or custom cards from breaking boundaries */
-      #root div {
-        max-width: 100% !important;
-      }
-      
-      /* Force All System Text, Labels, and Headings to be Readable Dark Slate and Left-Aligned */
-      #root div, #root label, #root h1, #root h2, #root p, #root span, #root li, #root small, #root strong, #root b, #root em, #root i {
-        color: #1E293B !important;
-        opacity: 1 !important; 
-        text-align: left !important;
-      }
-
-      /* Force all hidden inline text labels to become visible */
-      #root p *, #root div * {
-        color: #1E293B !important;
-        opacity: 1 !important;
-      }
-
-      /* Force informational paragraphs to have a clean line height and normal word wrapping */
-      #root p, #root small, #root div {
-        line-height: 1.6 !important;
-        white-space: normal !important; 
-      }
-      
-      /* Fix Standard Inputs, Select Dropdowns, and Textareas */
-      #root input, #root select, #root textarea, #root option {
-        background-color: #FFFFFF !important;
-        color: #1E293B !important;
-        border: 1px solid #CBD5E1 !important;
-      }
-      
-      /* Unselected Buttons, Pills, and Tiles Fix: White background, dark text, clean border */
-      #root button {
-        background-color: #FFFFFF !important;
-        color: #1E293B !important;
-        border: 1px solid #CBD5E1 !important;
-        text-align: center !important; 
-      }
-
-      /* Selected/Primary Action Buttons Fix: Turns solid medical blue with white text when active */
-      #root button[style*="#0284C7"],
-      #root button[style*="0284C7"],
-      #root button[style*="rgb(2, 132, 199)"] {
-        background-color: #0284C7 !important;
-        color: #FFFFFF !important;
-        border-color: #0284C7 !important;
-      }
-      #root button[style*="#0284C7"] *,
-      #root button[style*="0284C7"] *,
-      #root button[style*="rgb(2, 132, 199)"] * {
-        color: #FFFFFF !important;
-      }
-
-      /* Keep the Floating Feedback Action Button Text Crisp White */
-      #root a, #root a * {
-        color: #FFFFFF !important;
-        text-align: center !important;
+        max-width: 100%;
+        width: 100%;
+        overflow-x: hidden;
+        margin: 0;
+        padding: 0;
+        background-color: #F8FAFC;
       }
     </style>
   </head>

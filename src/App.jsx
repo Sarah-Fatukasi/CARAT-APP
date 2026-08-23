@@ -174,13 +174,13 @@ function caratLogic(form) {
   if (form.vascular_symptoms.includes("Cold/numb limb")) { score += 3; flags.push("Acute limb ischaemia — time-critical vascular emergency"); }
 
   // Examination findings
-  if (form.jvp === "elevated") { score += 2; flags.push("Elevated JVP — raised venous pressure, consider cardiac failure or tamponade"); }
-  if (form.jvp === "severely_elevated") { score += 3; flags.push("Severely elevated JVP — possible cardiac tamponade or severe right heart failure"); }
+  if (form.jvp === "Elevated") { score += 2; flags.push("Elevated JVP — raised venous pressure, consider cardiac failure or tamponade"); }
+  if (form.jvp === "Severely elevated") { score += 3; flags.push("Severely elevated JVP — possible cardiac tamponade or severe right heart failure"); }
   if (form.murmur === "yes") { score += 1; flags.push(`Cardiac murmur present${form.murmur_detail ? ` — ${form.murmur_detail}` : " — echocardiography essential"}`); }
-  if (form.leg_oedema === "moderate") { score += 1; flags.push("Moderate leg oedema — consider cardiac or hepatic cause"); }
-  if (form.leg_oedema === "severe") { score += 2; flags.push("Severe leg oedema — significant fluid overload"); }
-  if (form.lung_findings === "crepitations") { score += 1; flags.push("Pulmonary crepitations — possible pulmonary oedema"); }
-  if (form.lung_findings === "reduced_breath_sounds") { score += 2; flags.push("Reduced breath sounds — consider effusion, collapse or mass"); }
+  if (form.leg_oedema === "Moderate (+2)") { score += 1; flags.push("Moderate leg oedema — consider cardiac or hepatic cause"); }
+  if (form.leg_oedema === "Severe (+3/+4)") { score += 2; flags.push("Severe leg oedema — significant fluid overload"); }
+  if (form.lung_findings === "Crepitations / crackles") { score += 1; flags.push("Pulmonary crepitations — possible pulmonary oedema"); }
+  if (form.lung_findings === "Reduced breath sounds") { score += 2; flags.push("Reduced breath sounds — consider effusion, collapse or mass"); }
 
   const spo2 = parseFloat(form.spo2);
   if (spo2 && spo2 < 90) { score += 4; flags.push(`SpO₂ ${spo2}% — severe hypoxaemia, emergency assessment`); }
@@ -232,8 +232,8 @@ function caratLogic(form) {
     dataGaps.push("EuroSCORE II not calculated — consider calculating if patient is a surgical candidate");
   }
 
-  if (form.urgency === "emergency") score = Math.max(score, 15);
-  if (form.urgency === "urgent") score = Math.max(score, 10);
+  if (form.urgency === "Emergency") score = Math.max(score, 15);
+  if (form.urgency === "Urgent") score = Math.max(score, 10);
 
   let decision, decisionColor, decisionBg, actionSteps;
 
@@ -415,8 +415,7 @@ export default function CARAT() {
             </Field>
             <Field label="Clinician-assessed Urgency">
               <CSelect value={form.urgency} onChange={v => update("urgency", v)}
-                options={["", "Elective", "Urgent", "Emergency"]}
-                valueMap={{ "": "", "Elective": "elective", "Urgent": "urgent", "Emergency": "emergency" }} />
+                options={["", "Elective", "Urgent", "Emergency"]} />
             </Field>
           </div>
         )}
@@ -437,8 +436,7 @@ export default function CARAT() {
             <SectionDivider label="Cardiovascular Examination" />
             <Field label="Jugular Venous Pressure (JVP)">
               <CSelect value={form.jvp} onChange={v => update("jvp", v)}
-                options={["", "Normal", "Mildly elevated", "Elevated", "Severely elevated", "Not assessed"]}
-                valueMap={{ "": "", "Normal": "normal", "Mildly elevated": "mild", "Elevated": "elevated", "Severely elevated": "severely_elevated", "Not assessed": "not_assessed" }} />
+                options={["", "Normal", "Mildly elevated", "Elevated", "Severely elevated", "Not assessed"]} />
             </Field>
             <Field label="Cardiac Murmur">
               <div style={{ display: "flex", gap: "10px", marginTop: "6px" }}>
@@ -454,15 +452,13 @@ export default function CARAT() {
             )}
             <Field label="Leg / Ankle Oedema">
               <CSelect value={form.leg_oedema} onChange={v => update("leg_oedema", v)}
-                options={["", "None", "Mild (+1)", "Moderate (+2)", "Severe (+3/+4)"]}
-                valueMap={{ "": "", "None": "none", "Mild (+1)": "mild", "Moderate (+2)": "moderate", "Severe (+3/+4)": "severe" }} />
+                options={["", "None", "Mild (+1)", "Moderate (+2)", "Severe (+3/+4)"]} />
             </Field>
 
             <SectionDivider label="Respiratory Examination" />
             <Field label="Lung Findings on Auscultation">
               <CSelect value={form.lung_findings} onChange={v => update("lung_findings", v)}
-                options={["", "Clear", "Crepitations / crackles", "Wheeze", "Reduced breath sounds", "Pleural rub", "Not assessed"]}
-                valueMap={{ "": "", "Clear": "clear", "Crepitations / crackles": "crepitations", "Wheeze": "wheeze", "Reduced breath sounds": "reduced_breath_sounds", "Pleural rub": "pleural_rub", "Not assessed": "not_assessed" }} />
+                options={["", "Clear", "Crepitations / crackles", "Wheeze", "Reduced breath sounds", "Pleural rub", "Not assessed"]} />
             </Field>
 
             <Field label="Other examination findings (free text)">
@@ -658,9 +654,9 @@ function Input({ value, onChange, placeholder, type = "text" }) {
   );
 }
 
-function CSelect({ value, onChange, options, valueMap }) {
+function CSelect({ value, onChange, options }) {
   return (
-    <select value={value} onChange={e => onChange(valueMap ? (valueMap[e.target.value] ?? e.target.value) : e.target.value)}
+    <select value={value} onChange={e => onChange(e.target.value)}
       style={{ background: COLORS.white, border: `1px solid ${COLORS.borderMid}`, borderRadius: "6px", padding: "11px 13px", color: value ? COLORS.text : COLORS.textLight, fontSize: "14px", outline: "none", width: "100%", cursor: "pointer", fontFamily: "'Georgia', serif" }}>
       {options.map(o => <option key={o} value={o}>{o || "Select..."}</option>)}
     </select>

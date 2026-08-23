@@ -157,12 +157,14 @@ function caratLogic(form) {
 
   // Cardiac symptoms
   if (form.cardiac_symptoms.includes("Dyspnoea at rest")) { score += 3; flags.push("Dyspnoea at rest — haemodynamic compromise likely"); }
+  if (form.cardiac_symptoms.includes("Dyspnoea on exertion")) { score += 1; flags.push("Dyspnoea on exertion — functional limitation present"); }
   if (form.cardiac_symptoms.includes("Syncope/pre-syncope")) { score += 3; flags.push("Syncope — consider critical aortic stenosis or arrhythmia"); }
   if (form.cardiac_symptoms.includes("Cyanosis")) { score += 4; flags.push("Cyanosis — urgent evaluation required"); }
 
   // Pulmonary symptoms
   if (form.pulmonary_symptoms.includes("Haemoptysis")) { score += 2; flags.push("Haemoptysis — consider mitral stenosis, pulmonary malignancy or TB"); }
   if (form.pulmonary_symptoms.includes("Stridor")) { score += 3; flags.push("Stridor — airway compromise, urgent assessment needed"); }
+  if (form.pulmonary_symptoms.includes("Recurrent chest infections")) { score += 1; flags.push("Recurrent chest infections — consider underlying structural lung or cardiac pathology"); }
 
   // Oesophageal symptoms
   if (form.oesophageal_symptoms.includes("Dysphagia (difficulty swallowing)")) { score += 2; flags.push("Dysphagia — consider oesophageal malignancy or mediastinal mass"); }
@@ -176,7 +178,7 @@ function caratLogic(form) {
   // Examination findings
   if (form.jvp === "Elevated") { score += 2; flags.push("Elevated JVP — raised venous pressure, consider cardiac failure or tamponade"); }
   if (form.jvp === "Severely elevated") { score += 3; flags.push("Severely elevated JVP — possible cardiac tamponade or severe right heart failure"); }
-  if (form.murmur === "yes") { score += 1; flags.push(`Cardiac murmur present${form.murmur_detail ? ` — ${form.murmur_detail}` : " — echocardiography essential"}`); }
+  if (form.murmur === "yes") { flags.push(`Cardiac murmur present${form.murmur_detail ? ` — ${form.murmur_detail}` : " — echocardiography essential"}`); }
   if (form.leg_oedema === "Moderate (+2)") { score += 1; flags.push("Moderate leg oedema — consider cardiac or hepatic cause"); }
   if (form.leg_oedema === "Severe (+3/+4)") { score += 2; flags.push("Severe leg oedema — significant fluid overload"); }
   if (form.lung_findings === "Crepitations / crackles") { score += 1; flags.push("Pulmonary crepitations — possible pulmonary oedema"); }
@@ -237,7 +239,7 @@ function caratLogic(form) {
 
   let decision, decisionColor, decisionBg, actionSteps;
 
-  if (score >= 12 || form.cardiac_symptoms.includes("Cyanosis") || form.ecg_findings.includes("ST elevation") || form.ecg_findings.includes("Ventricular tachycardia") || form.echo_findings.includes("Cardiac tamponade") || form.vascular_symptoms.includes("Tearing/ripping chest or back pain")) {
+  if (score >= 14 || form.cardiac_symptoms.includes("Cyanosis") || form.ecg_findings.includes("ST elevation") || form.ecg_findings.includes("Ventricular tachycardia") || form.echo_findings.includes("Cardiac tamponade") || form.vascular_symptoms.includes("Tearing/ripping chest or back pain")) {
     decision = "EMERGENCY REFERRAL";
     decisionColor = "#DC2626";
     decisionBg = "rgba(220,38,38,0.07)";
@@ -248,7 +250,7 @@ function caratLogic(form) {
       "Send all available investigations with the patient",
       "Document transfer time and patient condition at departure",
     ];
-  } else if (score >= 7) {
+  } else if (score >= 8) {
     decision = "URGENT REFERRAL";
     decisionColor = "#D97706";
     decisionBg = "rgba(217,119,6,0.07)";
@@ -259,7 +261,7 @@ function caratLogic(form) {
       "Calculate EuroSCORE II if not already done",
       "Commence appropriate medical therapy while awaiting specialist review",
     ];
-  } else if (score >= 3) {
+  } else if (score >= 4) {
     decision = "ELECTIVE REFERRAL";
     decisionColor = "#16A34A";
     decisionBg = "rgba(22,163,74,0.07)";
